@@ -37,10 +37,10 @@ Este conjunto de datos es limpio, pequeño y excelente para análisis explorator
    → **Gráfico:** Barras con `groupby('gender')`
 
 3. ¿Influye el nivel educativo de los padres en las calificaciones de los estudiantes?  
-   → **Gráfico:** Boxplot o barras agrupadas por `parental level of education`
+   → **Gráfico:** Boxplot agrupadas por `parental level of education`
 
 4. ¿Los estudiantes que completaron el curso de preparación obtienen mejores resultados?  
-   → **Gráfico:** Boxplot o barras comparativas con `groupby('test preparation course')`
+   → **Gráfico:** Boxplot comparativas con `groupby('test preparation course')`
 
 5. ¿Qué combinación de género y almuerzo escolar se asocia con promedios más altos o bajos?  
    → **Gráfico:** Barras múltiples con `groupby(['gender', 'lunch'])`
