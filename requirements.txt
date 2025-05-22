@@ -4,3 +4,6 @@ pandas
 polars
 tabulate
 seaborn
+openpyxl
+et_xmlfile
+matplotlib_inline
