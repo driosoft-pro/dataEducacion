@@ -44,8 +44,13 @@ class LimpiaValida:
             print("No hay datos para verificar la información.")
             return
 
-        print("Información del DataFrame:")
-        print(self.df.info())
+        print("Forma del DataFrame:", self.df.shape)
+        print("\nPrimeras 5 filas:")
+        print(self.df.head())
+        print("\nInformación del DataFrame:")
+        self.df.info()
+        print("\nEstadísticas descriptivas:")
+        print(self.df.describe())
 
     def validar_descriptivos(self):
         if self.df is None:
@@ -152,4 +157,3 @@ class LimpiaValida:
 
         print("Datos limpios (primeras filas):")
         print(self.df.head())
-        

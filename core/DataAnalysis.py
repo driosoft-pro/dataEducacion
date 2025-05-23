@@ -5,6 +5,8 @@ import core.utils as ut
 from core.LoadData import LoadData
 from core.DistribucionMultiple import DistribucionMultiple
 from core.LimpiaValida import LimpiaValida
+from core.operaciones import Operaciones
+from core.AnalisisEducacionPadres import AnalisisEducacionPadres
 
 class DataAnalysis:
     def __init__(self):
@@ -12,12 +14,16 @@ class DataAnalysis:
         self.loader = LoadData()
         self.multiple = DistribucionMultiple()
         self.valida = LimpiaValida()
+        self.operar = Operaciones()
+        self.edu_padres = AnalisisEducacionPadres()
 
     # Cargar datos
     def load_data(self, file_path):
         self.df = self.loader.load_data(file_path)
         self.multiple.df = self.df
         self.valida.df = self.df
+        self.operar.df = self.df
+        self.edu_padres.df = self.df
 
     # Cargar datos sin encabezado
     def load_data_not_head(self, file_path):
@@ -61,3 +67,25 @@ class DataAnalysis:
     def analizar_distribuciones_multiples(self, *columns):
         self.multiple.analizar(columns)
         
+    # Respuesta Segunda pregunta
+
+        
+    # Respuesta Tercera pregunta
+    def influencia_padres_educacion(self):
+        self.operar.calcular_promedio()
+        self.edu_padres.educacion_padres()
+
+
+    # Respuesta Cuarta pregunta
+    
+    # Respuesta Quinta pregunta
+    
+    # Respuesta Sexta pregunta
+    
+    # Respuesta Septima pregunta
+    
+    # Respuesta Octava pregunta
+    
+    # Respuesta Novena pregunta
+    
+    # Respuesta Decima pregunta
