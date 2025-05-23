@@ -1,93 +1,63 @@
-# librerías
+# librarias
 import core.utils as ut
 
 # clases
-from .LoadData import LoadData
-from .DataPreparation import DataPreparation
-from .ExploratoryAnalysis import ExploratoryAnalysis
-from .AnalisisDistribucion import AnalisisDistribucion # Importación corregida basada en el nombre del archivo
-from .RelationshipAnalysis import RelationshipAnalysis
-from .KeyFindings import KeyFindings
+from core.LoadData import LoadData
+from core.DistribucionMultiple import DistribucionMultiple
+from core.LimpiaValida import LimpiaValida
 
-class DataAnalysis():
-    # El DataFrame principal que se utilizará en todas las operaciones
+class DataAnalysis:
     def __init__(self):
-        # Inicializar el DataFrame principal como Ninguno
         self.df = None
+        self.loader = LoadData()
+        self.multiple = DistribucionMultiple()
+        self.valida = LimpiaValida()
 
-        # Inicializar las clases auxiliares, pasando None para df inicialmente.
-        # El df se actualizará en _update_all_dfs después de cargar los datos.
-        self.loader = LoadData(df=self.df)
-        self.preparer = DataPreparation(df=self.df)
-        self.explorer = ExploratoryAnalysis(df=self.df)
-        self.dist_analyzer = AnalisisDistribucion(df=self.df)
-        self.rel_analyzer = RelationshipAnalysis(df=self.df)
-        self.findings_reporter = KeyFindings(df=self.df)
-
-    # Cargar datos utilizando la instancia LoadData y actualizar el DataFrame interno.
+    # Cargar datos
     def load_data(self, file_path):
-        self.loader.load_data(file_path)
-        self.df = self.loader.df # Actualizar el DataFrame principal
-        # Pasar el DataFrame actualizado a todas las demás clases auxiliares
-        self._update_all_dfs()
-        print(f"Datos cargados desde {file_path}")
+        self.df = self.loader.load_data(file_path)
+        self.multiple.df = self.df
+        self.valida.df = self.df
 
-    # Método auxiliar para actualizar el DataFrame en todas las clases instanciadas.
-    def _update_all_dfs(self):    
-        self.preparer.df = self.df
-        self.explorer.df = self.df
-        self.dist_analyzer.df = self.df
-        self.rel_analyzer.df = self.df
-        self.findings_reporter.df = self.df
+    # Cargar datos sin encabezado
+    def load_data_not_head(self, file_path):
+        self.df = self.loader.load_data_not_head(file_path)
+    
+    # Validar Datos    
+    def validar_nombres(self):
+        self.valida.validar_nombres()
+        
+    def validar_datos(self):
+        self.valida.validar_datos()
+        
+    def validar_informacion(self):
+        self.valida.validar_informacion()
+            
+    def validar_tipos(self):
+        self.valida.validar_tipos()
+                
+    def validar_descriptivos(self):
+        self.valida.validar_descriptivos()
 
-    # Realiza la limpieza de datos y la ingeniería de características.
-    def prepare_data(self):    
-        if self.df is None:
-            print("No hay datos cargados. Por favor, cargue los datos primero usando load_data().")
-            return
-        self.df = self.preparer.clean_and_engineer_features()
-        # Actualiza el DataFrame en todas las clases después de la preparación
-        self._update_all_dfs() 
-        print("Preparación de datos completa.")
+    def validar_observaciones_atributos(self):        
+        self.valida.validar_observaciones_atributos()
 
-    # Realiza un análisis exploratorio de datos.
-    def explore_data(self, include_object_descriptive=False):    
-        if self.df is None:
-            print("No hay datos cargados. Por favor, cargue los datos primero usando load_data().")
-            return
-        self.explorer.check_info()
-        self.explorer.check_missing_values()
-        self.explorer.display_descriptive_statistics(include_object=include_object_descriptive)
-        self.explorer.check_unique_values()
-        print("Análisis exploratorio de datos completo.")
-
-    # Analiza y visualiza la distribución de una columna específica.
-    def analyze_distribution(self, column):    
-        if self.df is None:
-            print("No hay datos cargados. Por favor, cargue los datos primero usando load_data().")
-            return
-        self.dist_analyzer.analizar_distribucion(column)
-        print(f"Análisis de distribución para '{column}' completo.")
-
-    # Analiza la relación entre una columna categórica y una columna numérica.
-    def analyze_relationships(self, categorical_col, numerical_col):
-        if self.df is None:
-            print("No hay datos cargados. Por favor, cargue los datos primero usando load_data().")
-            return
-        self.rel_analyzer.analyze_categorical_numerical_relationship(categorical_col, numerical_col)
-        print(f"Análisis de relación entre '{categorical_col}' y '{numerical_col}' completo.")
-
-    # Analiza y visualiza las correlaciones entre las columnas de puntuación numéricas.
-    def analyze_scores_correlations(self, numerical_cols=['math_score', 'reading_score', 'writing_score']):
-        if self.df is None:
-            print("No hay datos cargados. Por favor, cargue los datos primero usando load_data().")
-            return
-        return self.rel_analyzer.analyze_correlations(numerical_cols)
-
-    # Resume los hallazgos clave del análisis.
-    def summarize_key_findings(self):
-        if self.df is None:
-            print("No hay datos cargados. Por favor, cargue los datos primero usando load_data().")
-            return
-        self.findings_reporter.summarize_findings()
-        print("Hallazgos clave resumidos.")
+    def validar_nulos(self):        
+        self.valida.validar_nulos()
+        
+    def validar_porcentaje_nulos(self):        
+        self.valida.validar_porcentaje_nulos()
+    
+    def contar_duplicados(self):
+        self.valida.contar_duplicados()
+        
+    def eliminar_duplicados(self):
+        self.valida.eliminar_duplicados()    
+            
+    def limpiar(self):
+        self.valida.limpiar()
+        
+    # Respuesta Primera pregunta
+    def analizar_distribuciones_multiples(self, *columns):
+        self.multiple.analizar(columns)
+        
