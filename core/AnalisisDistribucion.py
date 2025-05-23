@@ -1,8 +1,10 @@
-import utils as ut
+# libraries
+import core.utils as ut
 
 class AnalisisDistribucion():
+    # Inicializar df como Ninguno o con un DataFrame proporcionado
     def __init__(self, df=None):
-        self.df = df
+        self.df = df 
 
     def analizar_distribucion(self, column):
             """
@@ -10,7 +12,7 @@ class AnalisisDistribucion():
             """
             if self.df is None:
                 # Verificar si la columna existe en el DataFrame
-                print("No data loaded.")
+                print("No data loaded. Please load data first.")
                 return
             elif column not in self.df.columns:
                 print(f"La columna '{column}' no existe en el DataFrame.")
@@ -31,13 +33,9 @@ class AnalisisDistribucion():
                             bins     = num_bins,
                             color    = 'red',
                             fill     = True,
-                            stat     = 'count')    #'count' muestra el número de observaciones.
-                                                    #'frequency' muestra el número de observaciones dividida por el ancho del bin.
-                                                    #'density' normaliza las cuentas tal que el área del histograma es 1.
-                                                    #'probability' normaliza las cuentas tal que la suma de la altura de las barras es 1.
-
-                ut.plt.xlabel(atribute) #Texto en el eje x.
-                ut.plt.ylabel('Cuentas')              #Texto en el eje y.
-                ut.plt.title(f'Distribución de la variable {column}')             #Título del gráfico.
+                            stat     = 'count')
+                ut.plt.xlabel(atribute)
+                ut.plt.ylabel('Cuentas')
+                ut.plt.title(f'Distribución de la variable {column}')
                 ut.plt.xticks(rotation=45, fontsize=8)
                 ut.plt.show()
