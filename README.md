@@ -57,7 +57,7 @@ Este conjunto de datos es limpio, pequeño y excelente para análisis explorator
 9. ¿Qué porcentaje de estudiantes obtuvo más de 90 puntos en las tres asignaturas?  
    → **Métrica y pie chart:** Condición sobre las tres columnas de puntajes
 
-10. ¿Cuál es la distribución conjunta de notas entre matemáticas y escritura (o lectura)?  
+10. ¿Cuál es la distribución conjunta de notas entre matemáticas y escritura o lectura?  
     → **Gráfico:** Scatter plot o joint plot
 
 ---
