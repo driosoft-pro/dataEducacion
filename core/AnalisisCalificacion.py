@@ -1,7 +1,7 @@
 # librarias
 import core.utils as ut
 
-class AnalisisCalificacion:
+class  AnalisisCalificacion:
     def __init__(self, df=None):
         self.df = df
 
@@ -34,7 +34,8 @@ class AnalisisCalificacion:
             colors=colors,
             autopct='%1.1f%%',
             startangle=90,
-            shadow=True
+            shadow=True,
+            labeldistance=1.2 
         )
         ut.plt.axis('equal')
         ut.plt.title('Porcentaje de Estudiantes con más de 90 puntos en las tres asignaturas', fontsize=16)
