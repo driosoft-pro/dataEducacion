@@ -137,10 +137,6 @@ class DataAnalysis:
         self.dist_conjunta.generar_graficos()
     
     # Resumen de hallazgos del analisis    
-    #def resumen_hallazgos(self, gender_scores, prep_scores, education_scores, correlation_matrix):
-        #self.operar.calcular_promedio()
-        #self.analisis_final.mostrar_resumen(gender_scores, prep_scores, education_scores, correlation_matrix)
-
     def resumen_hallazgos(self):
         self.df = self.operar.calcular_promedio()
         gender_scores = self.operar.obtener_gender_scores()
